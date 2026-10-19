@@ -1,0 +1,53 @@
+# ServiceDesk .gitignore
+
+# Dependencies
+node_modules/
+
+# Build Outputs
+dist/
+build/
+
+# Next.js
+.next/
+out/
+
+# TypeScript incremental build info
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Certificates and private keys
+*.pem
+*.key
+
+# Testing
+coverage/
+test-results/
+playwright-report/
+blob-report/
+
+# Deployment & Tool Caches
+.vercel/
+.turbo/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local IDE Files
+*.code-workspace
+.vs/
+.idea/
