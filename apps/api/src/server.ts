@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { prisma } from "./db.js";
 
 // Create Express application
 const app = express();
@@ -20,6 +21,29 @@ app.get("/health", (_req, res) => {
         status: "ok",
         message: "ServiceDesk API is running",
     });
+});
+
+// Database health check endpoint
+app.get("/health/db", async (_req, res) => {
+    try {
+        // Execute a SQL query through prisma
+        const result = await prisma.$queryRaw<Array<{ database: string }>>`
+            SELECT current_database() AS database
+        `;
+
+        res.status(200).json({
+            status: "ok",
+            database: result[0]?.database,
+            message: "PostgreSQL connection successful",
+        });
+    } catch (error) {
+        console.error("Database connection failed:", error);
+
+        res.status(503).json({
+            status: "error",
+            message: "PostgreSQL connection failed",
+        });
+    }
 });
 
 // Start listening for requests

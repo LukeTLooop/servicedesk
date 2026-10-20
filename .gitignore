@@ -51,3 +51,6 @@ Desktop.ini
 *.code-workspace
 .vs/
 .idea/
+
+# Generated Prisma Client
+/apps/api/src/generated/prisma/
