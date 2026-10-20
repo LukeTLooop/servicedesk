@@ -1,0 +1,45 @@
+name: ServiceDesk CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  permissions:
+    contents: read
+
+  jobs:
+    validate:
+      name: Validate Application
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: "24"
+            cache: npm
+
+        - name: Install dependencies
+          run: npm ci
+
+        - name: Generate Prisma Client
+          env:
+            DATABASE_URL: postgresql://servicedesk:ci_placeholder@localhost:5432/servicedesk
+          run: ./node_modules/.bin/prisma generate --config apps/api/prisma7.config.ts
+
+        - name: Type-check backend
+          run: npm run typecheck --workspace=apps/api
+
+        - name: Build backend
+          run: npm run build --workspace=apps/api
+
+        - name: Lint frontend
+          run: npm run lint --workspace=apps/web
+
+        - name: Build frontend
+          run: npm run build --workspace=apps/web
