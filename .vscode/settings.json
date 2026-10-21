@@ -1,0 +1,28 @@
+{
+  // Formatting
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  // ESLint
+  "eslint.enable": true,
+  "eslint.workingDirectories": [
+    "./apps/api",
+    "./apps/web"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Automatically fix supported ESLint issues on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Use Prisma's formatter for schema files
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
+}

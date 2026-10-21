@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Generated Prisma Client
+apps/api/src/generated/prisma/
+
+# Generated and cached files
+coverage/
+*.tsbuildinfo
+package-lock.json

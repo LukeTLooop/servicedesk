@@ -32,6 +32,9 @@ jobs:
           DATABASE_URL: postgresql://servicedesk:ci_placeholder@localhost:5432/servicedesk
         run: ./node_modules/.bin/prisma generate --config apps/api/prisma7.config.ts
 
+      - name: Lint backend
+        run: npm run lint --workspace=apps/api
+
       - name: Type-check backend
         run: npm run typecheck --workspace=apps/api
 

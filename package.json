@@ -20,5 +20,9 @@
     "@prisma/engines@7.10.1": true,
     "esbuild@0.28.2": true,
     "unrs-resolver@1.12.2": true
+  },
+  "devDependencies": {
+    "prettier": "3.9.10",
+    "prettier-plugin-multiline-arrays": "^4.1.11"
   }
 }
